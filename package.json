@@ -3,18 +3,6 @@
   "version": "1.0.0",
   "private": false,
   "main": "build/main.js",
-  "build": {
-    "icon": "public/favicon.png",
-    "productName": "OneCube",
-    "files": [
-      "public/build/bundle.js",
-      "build/main.js",
-      "build/preload.js"
-    ],
-    "win": {},
-    "linux": {},
-    "mac": {}
-  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
@@ -22,7 +10,7 @@
     "electron": "wait-on http://localhost:5000 && electron .",
     "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
     "preelectron-pack": "yarn run build",
-    "electron-pack": "electron-builder",
+    "electron-pack": "electron-builder --config electron-builder.json",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {

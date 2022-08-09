@@ -1,0 +1,41 @@
+appId: 'onecube'
+productName: 'OneCube'
+artifactName: '${productName}-setup-${version}.${ext}'
+
+copyright: 'Copyright © 2021-2022 Polyfrost'
+
+asar: true
+compression: 'maximum'
+
+files:
+  - 'public/build/bundle.js'
+  - 'build/main.js'
+  - 'build/preload.js'
+
+win:
+  target:
+    - target: 'nsis'
+      arch: 'x64'
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+
+mac:
+  target:
+    - target: 'dmg'
+      arch:
+        - 'x64'
+        - 'arm64'
+  artifactName: '${productName}-setup-${version}-${arch}.${ext}'
+  category: 'public.app-category.games'
+
+linux:
+  target: 'AppImage'
+  maintainer: 'Polyfrost'
+  vendor: 'Polyfrost'
+  synopsis: 'Next-gen Minecraft launcher.'
+  description: 'Next-gen Minecraft launcher.'
+  category: 'Game'
