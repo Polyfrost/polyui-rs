@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+package-lock.json
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Svelte Distribution
+public/build/
+
+# Electron Distribution
+dist
+
+# Electron build
+build
+
+# Project Build Automation Directory
+private
+
+# Desktop Services Store on macOS
+.DS_Store
