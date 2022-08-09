@@ -10,7 +10,7 @@
     "electron": "wait-on http://localhost:5000 && electron .",
     "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
     "preelectron-pack": "yarn run build",
-    "electron-pack": "electron-builder --config electron-builder.json",
+    "electron-pack": "electron-builder --config electron-builder.yml",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
