@@ -26,7 +26,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "electron-serve": "^1.1.0"
+    "electron-serve": "^1.1.0",
+    "svelte-routing": "^1.6.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
