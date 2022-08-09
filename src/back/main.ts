@@ -4,7 +4,7 @@ import serve from 'electron-serve';
 import ipcHandler from './ipc';
 
 const loadURL = serve({ directory: 'public' });
-const dev = !app.isPackaged;
+const dev = !app.isPackaged || !!process.env.DEVELOPMENT;
 let mainWindow: BrowserWindow | null;
 
 const createMainWindow = () => {
