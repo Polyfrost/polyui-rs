@@ -10,7 +10,7 @@ import ipcHandler from './ipc';
 remoteMain.initialize();
 
 const loadURL = serve({ directory: 'public' });
-const dev = !app.isPackaged;
+const dev = !app.isPackaged || !!process.env.DEVELOPMENT;
 let mainWindow: BrowserWindow | null;
 
 // args for the app uwu
