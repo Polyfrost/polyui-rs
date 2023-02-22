@@ -65,7 +65,7 @@ fn read_config_from_jar(jar_file: &Path) -> Result<Value, String> {
     return Err("No JSON files found!".to_string());
 }
 
-
+// TODO: make it actually work
 
 #[cfg(test)]
 mod tests {

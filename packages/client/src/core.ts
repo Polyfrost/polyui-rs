@@ -4,18 +4,12 @@
 export type Procedures = {
 	queries:
 		| { key: 'buildInfo'; input: never; result: BuildInfo }
-		| { key: 'jobs.getHistory'; input: LibraryArgs<null>; result: Array<JobReport> }
-		| { key: 'jobs.getRunning'; input: LibraryArgs<null>; result: Array<JobReport> }
+		| { key: 'jobs.getHistory'; input: LibraryArgs<null>; result: JobReport[] }
+		| { key: 'jobs.getRunning'; input: LibraryArgs<null>; result: JobReport[] }
 		| { key: 'jobs.isRunning'; input: LibraryArgs<null>; result: boolean }
 		| { key: 'library.getStatistics'; input: LibraryArgs<null>; result: Statistics }
-		| { key: 'library.list'; input: never; result: Array<LibraryConfigWrapped> }
-		| { key: 'microsoft.get_msauth_token'; input: never; result: string }
-		| { key: 'nodeState'; input: never; result: NodeState }
-		| { key: 'normi.composite'; input: never; result: NormalisedCompositeId }
-		| { key: 'normi.org'; input: never; result: NormalisedOrganisation }
-		| { key: 'normi.user'; input: never; result: NormalisedUser }
-		| { key: 'normi.userSync'; input: never; result: NormalisedUser }
-		| { key: 'normi.version'; input: never; result: string };
+		| { key: 'library.list'; input: never; result: LibraryConfigWrapped[] }
+		| { key: 'nodeState'; input: never; result: NodeState };
 	mutations:
 		| { key: 'library.create'; input: string; result: LibraryConfigWrapped }
 		| { key: 'library.delete'; input: string; result: null }
@@ -23,30 +17,18 @@ export type Procedures = {
 	subscriptions: { key: 'invalidateQuery'; input: never; result: InvalidateOperationEvent };
 };
 
-export interface BuildInfo {
-	version: string;
-	commit: string;
-}
+export type BuildInfo = { version: string; commit: string };
 
-export interface ConfigMetadata {
-	version: string | null;
-}
+export type ConfigMetadata = { version: string | null };
 
-export interface EditLibraryArgs {
-	id: string;
-	name: string | null;
-	description: string | null;
-}
+export type EditLibraryArgs = { id: string; name: string | null; description: string | null };
 
-export interface InvalidateOperationEvent {
-	key: string;
-	arg: any;
-}
+export type InvalidateOperationEvent = { key: string; arg: any };
 
-export interface JobReport {
+export type JobReport = {
 	id: string;
 	name: string;
-	data: Array<number> | null;
+	data: number[] | null;
 	metadata: any | null;
 	date_created: string;
 	date_modified: string;
@@ -55,73 +37,33 @@ export interface JobReport {
 	completed_task_count: number;
 	message: string;
 	seconds_elapsed: number;
-}
+};
 
 export type JobStatus = 'Queued' | 'Running' | 'Completed' | 'Canceled' | 'Failed' | 'Paused';
 
-export interface LibraryArgs<T> {
-	library_id: string;
-	arg: T;
-}
+export type LibraryArgs<T> = { library_id: string; arg: T };
 
-export interface LibraryConfig {
-	version: string | null;
-	name: string;
-	description: string;
-}
+/**
+ *  LibraryConfig holds the configuration for a specific library. This is stored as a '{uuid}.sdlibrary' file.
+ */
+export type LibraryConfig = { version: string | null } & { name: string; description: string };
 
-export interface LibraryConfigWrapped {
-	uuid: string;
-	config: LibraryConfig;
-}
+export type LibraryConfigWrapped = { uuid: string; config: LibraryConfig };
 
-export interface NodeConfig {
-	version: string | null;
-	id: string;
-	name: string;
-}
+/**
+ *  NodeConfig is the configuration for a node. This is shared between all libraries and is stored in a JSON file on disk.
+ */
+export type NodeConfig = { version: string | null } & { id: string; name: string };
 
-export interface NodeState {
-	version: string | null;
-	id: string;
-	name: string;
+export type NodeState = ({ version: string | null } & { id: string; name: string }) & {
 	data_path: string;
-}
+};
 
-export interface NormalisedCompositeId {
-	$type: string;
-	$id: any;
-	org_id: string;
-	user_id: string;
-}
-
-export interface NormalisedOrganisation {
-	$type: string;
-	$id: any;
-	id: string;
-	name: string;
-	users: NormalizedVec<NormalisedUser>;
-	owner: NormalisedUser;
-	non_normalised_data: Array<null>;
-}
-
-export interface NormalisedUser {
-	$type: string;
-	$id: any;
-	id: string;
-	name: string;
-}
-
-export interface NormalizedVec<T> {
-	$type: string;
-	edges: Array<T>;
-}
-
-export interface Statistics {
+export type Statistics = {
 	id: number;
 	date_captured: string;
 	total_instance_count: number;
 	library_db_size: string;
 	total_bytes_used: string;
 	oneconfig_stats: string;
-}
+};

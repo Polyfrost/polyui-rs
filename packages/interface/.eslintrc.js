@@ -1,5 +1,5 @@
 module.exports = {
-	...require('@polyui/config/eslint-config.js'),
+	extends: [require.resolve('@polyui/config/eslint/web.js')],
 	parserOptions: {
 		tsconfigRootDir: __dirname,
 		project: './tsconfig.json'

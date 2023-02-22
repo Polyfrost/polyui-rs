@@ -37,7 +37,6 @@ mod launcher;
 mod libraries;
 mod microsoft;
 mod minecraft;
-mod normi;
 mod mod_sync;
 mod mod_extraction;
 pub mod utils;
@@ -98,7 +97,6 @@ pub(crate) fn mount() -> Arc<Router> {
 		})
 		.merge("library.", libraries::mount())
 		.merge("jobs.", jobs::mount())
-		.merge("normi.", normi::mount())
 		.merge("instance.", instance::mount())
 		.merge("minecraft.", minecraft::mount())
 		.merge("java.", java::mount())

@@ -268,7 +268,6 @@ impl Profiles {
         Ok(self)
     }
 
-    #[tracing::instrument(skip_all)]
     pub async fn sync<'a>(
         &'a self,
         batch: &'a mut sled::Batch,
@@ -278,8 +277,7 @@ impl Profiles {
             .try_for_each_concurrent(None, |(path, profile)| async move {
                 let json = serde_json::to_vec_pretty(&profile)?;
 
-                let json_path = Path::new(path.to_str()
-                    .expect("Could not convert path to string."))
+                let json_path = Path::new(path.to_str().expect("Could not convert the path to string."))
                     .join(PROFILE_JSON_PATH);
 
                 fs::write(json_path, json).await?;

@@ -1,0 +1,48 @@
+{
+	"name": "@polyui/installer",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"private": true,
+	"scripts": {
+		"vite": "vite",
+		"dev": "tauri dev",
+		"tauri": "tauri",
+		"build": "node ./src-tauri/build.js",
+		"dmg": "open ../../target/release/bundle/dmg",
+		"typecheck": "tsc -b"
+	},
+	"dependencies": {
+		"@fontsource/inter": "^4.5.13",
+		"@headlessui/react": "^1.7.3",
+		"@hookform/resolvers": "^2.9.10",
+		"@loadable/component": "^5.15.2",
+		"@radix-ui/react-progress": "^1.0.1",
+		"@radix-ui/react-slider": "^1.1.0",
+		"@radix-ui/react-toast": "^1.1.2",
+		"@radix-ui/react-tooltip": "^1.0.2",
+		"@rspc/client": "^0.0.0-main-7c0a67c1",
+		"@rspc/tauri": "^0.0.0-main-7c0a67c1",
+		"@polyui/client": "workspace:*",
+		"@polyui/interface": "workspace:*",
+		"@polyui/ui": "workspace:*",
+		"@tauri-apps/api": "^1.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"clsx": "^1.2.1",
+		"valtio": "^1.7.4",
+		"zod": "^3.20.2"
+	},
+	"devDependencies": {
+		"@polyui/config": "workspace:*",
+		"@tauri-apps/cli": "^1.2.3",
+		"@types/babel-core": "^6.25.7",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
+		"@vitejs/plugin-react": "^3.1.0",
+		"sass": "^1.58.3",
+		"typescript": "^4.9.5",
+		"vite": "^4.1.4",
+		"vite-plugin-svgr": "^2.4.0",
+		"vite-tsconfig-paths": "^4.0.5"
+	}
+}

@@ -1,0 +1,35 @@
+[package]
+name = "oneinstaller"
+version = "0.1.0"
+description = "installer for polyfrost and stuff"
+authors = ["Polyfrost"]
+license = ""
+repository = "https://github.com/polyfrost/polyui-rs"
+default-run = "oneinstaller"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+tauri = { version = "1.2.4", features = ["api-all", "linux-protocol-headers", "macos-private-api"] }
+rspc = { workspace = true, features = ["tauri"] }
+httpz = { workspace = true, features = ["axum", "tauri"] } # TODO: The `axum` feature should be only enabled on Linux but this currently can't be done: https://github.com/rust-lang/cargo/issues/1197
+polyui-core = { path = "../../../core" }
+tokio = { workspace = true, features = ["sync"] }
+window-shadows = "0.2.0"
+tracing = "0.1.36"
+serde = "1.0.145"
+percent-encoding = "2.2.0"
+http = "0.2.8"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+swift-rs = { workspace = true }
+
+[build-dependencies]
+tauri-build = { version = "1.1.1", features = [] }
+
+[target.'cfg(target_os = "macos")'.build-dependencies]
+swift-rs = { workspace = true, features = ["build"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
